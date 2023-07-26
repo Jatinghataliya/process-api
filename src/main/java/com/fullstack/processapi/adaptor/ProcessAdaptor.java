@@ -9,4 +9,7 @@ public class ProcessAdaptor {
 		return Process.builder().domain(processData.getDomain()).images(processData.getImages()).build();
 	}
 	
+	public static ProcessData getProcessData(Process process) {
+		return ProcessData.builder().domain(process.getDomain()).images(process.getImages()).id(process.getId()).build();
+	}
 }

@@ -1,10 +1,12 @@
 package com.fullstack.processapi.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.fullstack.processapi.adaptor.ProcessAdaptor;
@@ -42,5 +44,12 @@ public class ProcessService {
 				processRepository.save(process);
 			}
 		});
+	}
+	
+	public List<ProcessData> getProcessData(String domain, Pageable pageable){
+		if (domain == null || domain.isEmpty()) {
+			return processRepository.findAll(pageable).getContent().stream().map(p -> ProcessAdaptor.getProcessData(p)).collect(Collectors.toList());
+		}
+		return processRepository.findByDomain(domain, pageable).stream().map(p -> ProcessAdaptor.getProcessData(p)).collect(Collectors.toList());
 	}
 }

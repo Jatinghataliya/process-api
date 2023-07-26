@@ -12,6 +12,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class ProcessData {
+	private int id;
 	private String domain;
 	private String[] images;
 }

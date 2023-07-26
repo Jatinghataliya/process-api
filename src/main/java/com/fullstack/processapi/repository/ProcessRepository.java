@@ -1,9 +1,12 @@
 package com.fullstack.processapi.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProcessRepository extends JpaRepository<com.fullstack.processapi.entity.Process, Integer> {
-
+public interface ProcessRepository extends PagingAndSortingRepository<com.fullstack.processapi.entity.Process, Integer> {
+	List<com.fullstack.processapi.entity.Process> findByDomain(String domain, Pageable pageable);
 }

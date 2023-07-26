@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fullstack.processapi.model.ProcessData;
+
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
